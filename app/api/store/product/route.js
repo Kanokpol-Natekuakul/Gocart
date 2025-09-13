@@ -20,7 +20,7 @@ export async function POST(request) {
     const description=formData.get('description')
     const mrp=Number(formData.get('mrp'))
     const price=Number(formData.get('price'))
-    const category=formData.get('ncategoryame')
+    const category=formData.get('category')
     const images=formData.getAll('images')
 
     if(!name || !description || !mrp || !price || !category || images.length<1){

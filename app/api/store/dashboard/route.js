@@ -13,13 +13,13 @@ export async function GET(request) {
 
     const products=await prisma.product.findMany({where:{storeId}})
 
-    const rating=await prisma.rating.findMany({
+    const ratings=await prisma.rating.findMany({
       where:{productId:{in:products.map(product=>product.id)}},
       include:{user:true,product:true}
     })
 
     const dashboardData={
-      rating,
+      ratings,
       totalOrders:orders.length,
       totalEarnings:Math.round(orders.reduce((acc,order)=>acc + order.total,0)),
       totalProducts:products.length
